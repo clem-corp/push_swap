@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:46:54 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/14 13:23:01 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:44:23 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
-// # include "../libft/libft/libft.h"
+/* # include "../libft/libft/libft.h" */
 
 /* ************************************************************************** */
 /* List */
@@ -54,10 +54,10 @@ typedef struct s_stack
 /* ************************************************************************** */
 /* boolean */
 /* ************************************************************************** */
-enum	print
+enum	select_print
 {
-	no,
-	yes
+	print,
+	noprint
 };
 
 enum	stack_select
