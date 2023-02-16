@@ -6,20 +6,21 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:46:54 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 06:54:21 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/02/16 12:33:11 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+# define N_MAX 2147483647
+# define N_MIN -2147483648
 
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <limits.h>
+#include <limits.h>
 # include "libft/libft.h"
-# include "utils/utils.h"
 
 /* ************************************************************************** */
 /* List */
@@ -69,8 +70,21 @@ enum	e_stack_select
 /* ************************************************************************** */
 /* check args */
 /* ************************************************************************** */
-int	is_digit(int c);
-int	stack_checker(const int argc, const char **argv);
+int		is_digit(int c);
+int		stack_checker(const int argc, const char **argv);
+int		already_order(const char **argv);
+
+/* ************************************************************************** */
+/* Add front -- Add back */
+/* ************************************************************************** */
+void	ft_addback(t_lst **lst, int n);
+t_lst	*ft_addfront(t_lst **lst, int n);
+
+/* ************************************************************************** */
+/* Stack init et free */
+/* ************************************************************************** */
+t_lst	*init_lst(int argc, const char **argv);
+t_stack	*init_stack(t_lst **lst);
 
 /* ************************************************************************** */
 /* Global Stack utils */
@@ -94,5 +108,11 @@ void    ft_rotate(t_lst **stack);
 /* Reverse Rotate (-1 all position) { last to first } */
 /* ************************************************************************** */
 void    ft_reverse_rotate(t_lst **stack); 
+
+/* ************************************************************************** */
+/* Algo */
+/* ************************************************************************** */
+void	fill_stack(t_stack **stack, int argc, const char **argv);
+void	algo(t_stack **stack, int argc, const char **argv);
 
 #endif
