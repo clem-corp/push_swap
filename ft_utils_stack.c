@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_stack.c                                      :+:      :+:    :+:   */
+/*   ft_utils_stack.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/16 00:26:43 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 00:33:34 by clacaill         ###   ########.fr       */
+/*   Created: 2023/02/16 02:25:17 by clacaill          #+#    #+#             */
+/*   Updated: 2023/02/16 04:57:26 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_swap(t_lst **stack)
 {
 	t_lst	*temp;
 
-	if (!*stack || !(*stack)->next == NULL)
+	if (!*stack || (*stack)->next == NULL)
 		return;
 	temp = (*stack);
 	temp->next = (*stack)->next->next;
@@ -30,12 +30,12 @@ void    ft_push(t_lst **orig, t_lst **dest)
     t_lst   *temp;
 
     if (!*orig)
-        return;
+		return ;
 	temp = *orig;
     (*orig) = (*orig)->next;
     temp->next = *dest;
     *dest = temp;
-    return;
+    return ;
 }
 
 void    ft_rotate(t_lst **stack)
