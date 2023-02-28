@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_lst.c                                       :+:      :+:    :+:   */
+/*   add_lst.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 09:53:16 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 11:52:35 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:45:35 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	ft_addback(t_lst **lst, int num)
 		*lst = new;
 	current = *lst;
 	while (current->next != NULL) 
-	{
 		current = current->next;
-		current->next = new;
-	}
+	current->next = new;
 }
 
 t_lst	*ft_addfront(t_lst **lst, int n) 

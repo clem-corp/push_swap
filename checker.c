@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checker.c                                       :+:      :+:    :+:   */
+/*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 05:36:46 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 07:44:23 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/02/28 16:13:12 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,12 @@ int	already_order(const char **argv)
 	i = 0;
 	value = 0;
 	value2 = 1;
-	while(argv[++i] && (value < value2))
+	while(argv[i] && (value < value2))
 	{
 		value = ft_atoi(argv[i]);
 		if(argv[i + 1])
 			value2 = ft_atoi(argv[i + 1]);
+		i++;
 	}
 	if (!argv[i])
 		return (1);

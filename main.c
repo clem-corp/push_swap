@@ -6,15 +6,26 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 12:38:37 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/02/28 20:00:41 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/* A mettre dans ./utils/stack.c */
-
-/* Fin de mettre dans ./utils/stack.c*/
+void update_index(t_lst **lst) {
+    t_lst *curr = *lst;
+    while (curr != NULL) {
+        int count = 0;
+        t_lst *iter = *lst;
+        while (iter != NULL) {
+            if (iter->n < curr->n)
+                count++;
+            iter = iter->next;
+        }
+        curr->index = count;
+        curr = curr->next;
+    }
+}
 
 int	main(int argc, const char **argv)
 {
@@ -25,15 +36,18 @@ int	main(int argc, const char **argv)
 		return (ft_printf("Error\n"));
 	else
 	{
-		/* la ya tout a gerer  */
 		if (stack_checker((const int)argc, (const char **)argv) == 0)
 			return (ft_printf("Error\n"));
 		if (already_order(argv) == 1)
-			return (ft_printf(""));
+			return (ft_printf("OK"));
 		lst = init_lst(argc, argv);
+		if(!lst)
+			return (ft_printf("Error\n"));
 		stack = init_stack(&lst);
-		// stack->a = lst;
-		// algo(&stack);
+		if(!stack)
+			return (ft_printf("Error\n"));
+		update_index(&stack->a);
+		//algo(&stack);
 		//free_stack(&stack);
 	}
 	return (ft_printf("SUCCESS 2.0\n"));

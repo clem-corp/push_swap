@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:46:54 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 12:33:11 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/02/28 18:38:25 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,13 @@ typedef struct s_lst
 typedef struct s_stack
 {
 	// global size
-	size_t	g_count;
+	size_t	size_g;
+	int		min;
+	int		max;
 	// Liste a
 	t_lst	*a;
-	size_t	a_size;
-	int		a_min;
-	int		a_max;
 	// Liste b
 	t_lst	*b;
-	size_t	b_size;
-	int		b_min;
-	int		b_max;
 }	t_stack;
 
 /* ************************************************************************** */
@@ -83,6 +79,9 @@ t_lst	*ft_addfront(t_lst **lst, int n);
 /* ************************************************************************** */
 /* Stack init et free */
 /* ************************************************************************** */
+size_t	set_size(t_lst *lst);
+int		find_min_lst(t_lst *lst);
+int		find_max_lst(t_lst *lst);
 t_lst	*init_lst(int argc, const char **argv);
 t_stack	*init_stack(t_lst **lst);
 
@@ -92,7 +91,7 @@ t_stack	*init_stack(t_lst **lst);
 /* ************************************************************************** */
 /* Swap */
 /* ************************************************************************** */
-void	ft_swap(t_lst **stack);
+void	ft_swap(t_lst **lst);
 
 /* ************************************************************************** */
 /* Push */
@@ -102,17 +101,26 @@ void	ft_push(t_lst **orig, t_lst **dest);
 /* ************************************************************************** */
 /* Rotate (+1 all position) { first to last } */
 /* ************************************************************************** */
-void    ft_rotate(t_lst **stack);
+void    ft_rotate(t_lst **lst);
 
 /* ************************************************************************** */
 /* Reverse Rotate (-1 all position) { last to first } */
 /* ************************************************************************** */
-void    ft_reverse_rotate(t_lst **stack); 
+void    ft_reverse_rotate(t_lst **lst); 
 
+/* ************************************************************************** */
+/* stack */
+/* ************************************************************************** */
 /* ************************************************************************** */
 /* Algo */
 /* ************************************************************************** */
-void	fill_stack(t_stack **stack, int argc, const char **argv);
-void	algo(t_stack **stack, int argc, const char **argv);
+//void	algo(t_stack **stack);
+
+/* ************************************************************************** */
+/* Free */
+/* ************************************************************************** */
+void	free_lst(t_lst **first);
+void	*free_stack(t_stack **stack);
+
 
 #endif
