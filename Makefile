@@ -6,7 +6,7 @@
 #    By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 03:18:57 by clacaill          #+#    #+#              #
-#    Updated: 2023/02/28 17:38:16 by clacaill         ###   ########.fr        #
+#    Updated: 2023/03/03 03:35:49 by clacaill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ build		:=
 NAME    	= push_swap
 SRCS_DIR	= ./
 SRCS		= main.c checker.c utils_stack.c
-SRCS		+= utils/init.c utils/add_lst.c utils/free.c algo/algo_1.c
+SRCS		+= utils/init.c utils/add_lst.c utils/free.c
+SRCS		+= process.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 
@@ -31,7 +32,7 @@ RM			= rm -rf
 cflags.release	:= -Wall -Wextra -Werror -MMD -MP -g3
 cflags.gdb		:= -g
 cflags.sanitize	:= -g -fsanitize=address
-CFLAGS			:= ${cflags.release} ${cflags.${build}}
+CFLAGS			:= ${cflags.release} ${cflags.release} ${cflags.${build}}
 
 .c.o	:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}

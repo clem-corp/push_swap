@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:46:54 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/28 18:38:25 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 05:34:14 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_lst
 {
 	int				n;
 	size_t			index;
-	//struct s_lst	*previous;
+	struct s_lst	*previous;
 	struct s_lst	*next;
 }	t_lst;
 
@@ -40,12 +40,15 @@ typedef struct s_stack
 {
 	// global size
 	size_t	size_g;
+	int		key_nmbr;
 	int		min;
 	int		max;
 	// Liste a
 	t_lst	*a;
+	size_t	a_size;
 	// Liste b
 	t_lst	*b;
+	size_t	b_size;
 }	t_stack;
 
 /* ************************************************************************** */
@@ -57,7 +60,7 @@ enum	e_select_print
 	print = 1 
 };
 
-enum	e_stack_select
+enum	e_lst_select
 {
 	a = 0,
 	b = 1
@@ -73,6 +76,7 @@ int		already_order(const char **argv);
 /* ************************************************************************** */
 /* Add front -- Add back */
 /* ************************************************************************** */
+void	addPrevious(t_lst **lst);
 void	ft_addback(t_lst **lst, int n);
 t_lst	*ft_addfront(t_lst **lst, int n);
 
@@ -80,10 +84,10 @@ t_lst	*ft_addfront(t_lst **lst, int n);
 /* Stack init et free */
 /* ************************************************************************** */
 size_t	set_size(t_lst *lst);
-int		find_min_lst(t_lst *lst);
-int		find_max_lst(t_lst *lst);
 t_lst	*init_lst(int argc, const char **argv);
 t_stack	*init_stack(t_lst **lst);
+int		find_min_lst(t_lst *lst);
+int		find_max_lst(t_lst *lst);
 
 /* ************************************************************************** */
 /* Global Stack utils */
@@ -115,6 +119,7 @@ void    ft_reverse_rotate(t_lst **lst);
 /* Algo */
 /* ************************************************************************** */
 //void	algo(t_stack **stack);
+void	ft_process(t_stack **stack);
 
 /* ************************************************************************** */
 /* Free */

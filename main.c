@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/28 20:00:41 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 02:55:17 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void update_index(t_lst **lst) {
         curr->index = count;
         curr = curr->next;
     }
+	return;
 }
 
 int	main(int argc, const char **argv)
@@ -46,7 +47,14 @@ int	main(int argc, const char **argv)
 		stack = init_stack(&lst);
 		if(!stack)
 			return (ft_printf("Error\n"));
-		update_index(&stack->a);
+		update_index(&(stack->a));
+		ft_process(&stack);
+		while(stack->b)
+		{
+			printf("index : %zu   ", stack->b->index);
+			printf("num : %d\n", stack->b->n);
+			stack->b = stack->b->next;
+		}
 		//algo(&stack);
 		//free_stack(&stack);
 	}

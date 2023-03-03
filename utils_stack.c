@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils_stack.c                                   :+:      :+:    :+:   */
+/*   utils_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 02:25:17 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/16 04:57:26 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 08:08:57 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(t_lst **stack)
+void	ft_swap(t_lst **lst)
 {
 	t_lst	*temp;
 
-	if (!*stack || (*stack)->next == NULL)
+	if (!(*lst) || (*lst)->next == NULL)
 		return;
-	temp = (*stack);
-	temp->next = (*stack)->next->next;
-	*stack = (*stack)->next;
-	(*stack)->next = temp;
+	temp = (*lst);
+	*lst = (*lst)->next;
+	temp->next = (*lst)->next;
+	(*lst)->next = temp;
+	(*lst)->previous = NULL;
+	temp->previous = *lst;
+	// free(temp);
 	return;
 }
 
@@ -33,45 +36,56 @@ void    ft_push(t_lst **orig, t_lst **dest)
 		return ;
 	temp = *orig;
     (*orig) = (*orig)->next;
+	(*orig)->previous = NULL;
     temp->next = *dest;
+	if (*dest)
+		(*dest)->previous = temp;
+	else
+		temp->previous = NULL;
     *dest = temp;
-    return ;
+	// free(temp);
+    return;
 }
 
-void    ft_rotate(t_lst **stack)
+void    ft_rotate(t_lst **lst)
 {
 	t_lst	*temp;
 
-	if (!*stack)
+	if (!*lst)
 		return;
-	temp = *stack;
+	temp = *lst;
 	while(temp->next)
 		temp = temp->next;
-	if (*stack != temp)
+	if (*lst != temp)
 	{
-		temp->next = *stack;
-		temp = *stack;
-		*stack = (*stack)->next;
+		temp->next = *lst;
+		(*lst)->previous = temp;
+		temp = *lst;
+		*lst = (*lst)->next;
 		temp->next = NULL;
+		(*lst)->previous = NULL;
 	}
+	// free(temp);
 	return;
 }
 
-void    ft_reverse_rotate(t_lst **stack)
+void    ft_reverse_rotate(t_lst **lst)
 {
 	t_lst	*temp;
 
-	if (!*stack)
+	if (!*lst)
 		return;
-	temp = *stack;
-	while((*stack)->next && (*stack)->next->next)
-		(*stack) = (*stack)->next;
-	if (*stack != temp)
+	temp = *lst;
+	while(temp->next)
+		temp = temp->next;
+	if (*lst != temp)
 	{
-		(*stack)->next->next = temp; 
-		temp = (*stack)->next;
-		(*stack)->next = NULL;
-		*stack = temp;
+		temp->next = *lst;
+		temp->previous->next = NULL;
+		temp->previous = NULL;
+		(*lst)->previous = temp;
+		(*lst) = temp;
 	}
+	// free(temp);
 	return;
 }
