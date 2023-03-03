@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:46:54 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 05:34:14 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:17:38 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 typedef struct s_lst
 {
 	int				n;
+	int				position;
 	size_t			index;
 	struct s_lst	*previous;
 	struct s_lst	*next;
@@ -66,6 +67,8 @@ enum	e_lst_select
 	b = 1
 };
 
+
+void	set_position(t_lst **lst);
 /* ************************************************************************** */
 /* check args */
 /* ************************************************************************** */

@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 02:25:17 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 08:08:57 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:21:35 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	ft_swap(t_lst **lst)
 	(*lst)->previous = NULL;
 	temp->previous = *lst;
 	// free(temp);
+	set_position(lst);
 	return;
 }
 
@@ -43,6 +44,8 @@ void    ft_push(t_lst **orig, t_lst **dest)
 	else
 		temp->previous = NULL;
     *dest = temp;
+	set_position(orig);
+	set_position(dest);
 	// free(temp);
     return;
 }
@@ -65,6 +68,7 @@ void    ft_rotate(t_lst **lst)
 		temp->next = NULL;
 		(*lst)->previous = NULL;
 	}
+	set_position(lst);
 	// free(temp);
 	return;
 }
@@ -86,6 +90,7 @@ void    ft_reverse_rotate(t_lst **lst)
 		(*lst)->previous = temp;
 		(*lst) = temp;
 	}
+	set_position(lst);
 	// free(temp);
 	return;
 }

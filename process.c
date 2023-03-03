@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 08:29:59 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:02:27 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_print_lst(enum e_lst_select lst_choose)
 	if(lst_choose == a)
 		ft_printf("a");
 	else if(lst_choose == b)
-		ft_printf("a");
+		ft_printf("b");
 	return ;
 }
 
@@ -28,7 +28,6 @@ void ft_reduce_a(t_stack **stack)
     int max = (*stack)->max;
     unsigned int i = 0;
     unsigned int j = 1;
-	printf("%zu\n",(*stack)->a_size);
     while ((*stack)->a_size > 2)
     {
         if((*stack)->a->index <= j * (*stack)->key_nmbr && (*stack)->a->n != min && (*stack)->a->n != max)
@@ -40,6 +39,7 @@ void ft_reduce_a(t_stack **stack)
 			if(i == j * (*stack)->key_nmbr)
 				j++;
 		}
+		//have to find if rotate or rotate reverse
 		ft_rotate(&((*stack)->a));
     }
 }

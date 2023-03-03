@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 02:55:17 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:18:41 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(int argc, const char **argv)
 		ft_process(&stack);
 		while(stack->b)
 		{
-			printf("index : %zu   ", stack->b->index);
+			printf("position : %d   ", stack->b->position);
 			printf("num : %d\n", stack->b->n);
 			stack->b = stack->b->next;
 		}

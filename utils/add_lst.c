@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 09:53:16 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 00:51:42 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:14:28 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_addback(t_lst **lst, int num)
 	current->next = new;
 }
 
-void addPrevious(t_lst **lst)
+void	addPrevious(t_lst **lst)
 {
 	t_lst *temp;
 	

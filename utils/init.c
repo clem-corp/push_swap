@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 08:15:52 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 07:24:30 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:22:23 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,19 @@ int		find_key_nmbr(t_stack *stack)
 	return (0);
 }
 
+void	set_position(t_lst **lst)
+{
+	t_lst	*lst_here;
+	lst_here = *lst;
+	int position = 0;
+	while(lst_here->next)
+	{
+		lst_here->position = ++position;
+		lst_here = lst_here->next;
+	}
+	lst_here->position = ++position;
+}
+
 t_stack	*init_stack(t_lst **lst)
 {
 	t_stack	*stack;
@@ -107,5 +120,6 @@ t_lst	*init_lst(int argc, const char **argv)
 		ft_addback(&lst, value);
 	}
 	addPrevious(&lst);
+	set_position(&lst);
 	return lst;
 }
