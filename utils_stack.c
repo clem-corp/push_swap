@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 02:25:17 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 10:21:35 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/07 18:45:40 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	ft_swap(t_lst **lst)
 	(*lst)->next = temp;
 	(*lst)->previous = NULL;
 	temp->previous = *lst;
-	// free(temp);
 	set_position(lst);
 	return;
 }
@@ -37,16 +36,18 @@ void    ft_push(t_lst **orig, t_lst **dest)
 		return ;
 	temp = *orig;
     (*orig) = (*orig)->next;
-	(*orig)->previous = NULL;
+	if ((*orig) != NULL)
+		(*orig)->previous = NULL;
     temp->next = *dest;
 	if (*dest)
 		(*dest)->previous = temp;
 	else
 		temp->previous = NULL;
     *dest = temp;
-	set_position(orig);
-	set_position(dest);
-	// free(temp);
+	if(*orig)
+		set_position(orig);
+	if(*dest)
+		set_position(dest);
     return;
 }
 
@@ -69,14 +70,13 @@ void    ft_rotate(t_lst **lst)
 		(*lst)->previous = NULL;
 	}
 	set_position(lst);
-	// free(temp);
 	return;
 }
 
 void    ft_reverse_rotate(t_lst **lst)
 {
 	t_lst	*temp;
-
+	
 	if (!*lst)
 		return;
 	temp = *lst;
@@ -91,6 +91,5 @@ void    ft_reverse_rotate(t_lst **lst)
 		(*lst) = temp;
 	}
 	set_position(lst);
-	// free(temp);
 	return;
 }

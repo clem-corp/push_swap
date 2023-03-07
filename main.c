@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 10:18:41 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:25:44 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,11 @@ int	main(int argc, const char **argv)
 			return (ft_printf("Error\n"));
 		update_index(&(stack->a));
 		ft_process(&stack);
-		while(stack->b)
+/* 		while(stack->a)
 		{
-			printf("position : %d   ", stack->b->position);
-			printf("num : %d\n", stack->b->n);
-			stack->b = stack->b->next;
-		}
-		//algo(&stack);
-		//free_stack(&stack);
+			printf("stack->a->n : %d \n", stack->a->n);
+			stack->a = stack->a->next;
+		} */
+		free_stack(&stack);
 	}
-	return (ft_printf("SUCCESS 2.0\n"));
 }

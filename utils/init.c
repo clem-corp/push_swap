@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 08:15:52 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/03 10:22:23 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/07 19:31:20 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int		find_key_nmbr(t_stack *stack)
 		return((stack->size_g - 2) / 4);
 	else if(stack->size_g > 100 && stack->size_g < 300)
 		return((stack->size_g - 2) / 10);
-	else if(stack->size_g > 300 && stack->size_g < 500)
+	else if(stack->size_g > 300 && stack->size_g <= 500)
 		return((stack->size_g - 2) / 20);
 	else if(stack->size_g > 500)
 		return((stack->size_g - 2) / 30);
@@ -68,7 +68,7 @@ void	set_position(t_lst **lst)
 {
 	t_lst	*lst_here;
 	lst_here = *lst;
-	int position = 0;
+	unsigned int position = 0;
 	while(lst_here->next)
 	{
 		lst_here->position = ++position;
@@ -96,7 +96,6 @@ t_stack	*init_stack(t_lst **lst)
 	while (temp->next)
 		temp = temp->next;
 	stack->key_nmbr = find_key_nmbr(stack);
-	//free(temp);
 	return (stack);
 }
 
