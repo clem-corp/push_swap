@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 05:36:46 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/08 19:22:26 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:58:04 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,37 +20,47 @@ int	is_digit(int c)
 	return (0);
 }
 
+int	check_two(const int argc, const char **argv)
+{
+	int			i;
+	int			j;
+	long int	value;
+
+	i = 0;
+	j = 0;
+	value = 0;
+	while (argv[++i] && i <= argc)
+	{
+		value = ft_atoi(argv[i]);
+		if (value > N_MAX || value < N_MIN)
+			return (0);
+		while (argv[j] && j <= argc)
+		{
+			if (i != j && ft_atoi(argv[j]) == ft_atoi(argv[i]))
+				return (0);
+			j++;
+		}
+	}
+	return (1);
+}
+
 // succes = 1 ||||| echec = 0
 int	stack_checker(const int argc, const char **argv)
 {
-	int	i;
-	int j;
-	long int value;
+	int			i;
+	int			j;
 
 	i = 0;
-	j = -1;
-	value = 0;
-	// checker les non chiffres
+	j = 0;
 	while (argv[++i] && i <= argc)
 	{
-		while(argv[i][++j] && is_digit(argv[i][j]) == 1);
-		if(argv[i][j] != '\0')
+		while (argv[i][j] && is_digit(argv[i][j]) == 1)
+			j++;
+		if (argv[i][j] != '\0')
 			return (0);
-		j = -1;
-	}
-	i = 0;
-	// checker les doublons
-	while (argv[++i] && i <= argc)
-	{
 		j = 0;
-		value = ft_atoi(argv[i]);
-		if(value > N_MAX || value < N_MIN)
-			return (0);
-		while (argv[++j] && j <= argc)
-			if(i != j && ft_atoi(argv[j]) == ft_atoi(argv[i]))
-			return (0);
 	}
-	return (1);
+	return (check_two((const int) argc, (const char **) argv));
 }
 
 // Already order ? 1 : 0
@@ -63,10 +73,10 @@ int	ft_already_order(const char **argv)
 	i = 0;
 	value = 0;
 	value2 = 1;
-	while(argv[i] && (value < value2))
+	while (argv[i] && (value < value2))
 	{
 		value = ft_atoi(argv[i]);
-		if(argv[i + 1])
+		if (argv[i + 1])
 			value2 = ft_atoi(argv[i + 1]);
 		i++;
 	}

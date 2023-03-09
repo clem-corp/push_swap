@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 02:25:17 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/07 18:45:40 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:29:28 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_swap(t_lst **lst)
 	t_lst	*temp;
 
 	if (!(*lst) || (*lst)->next == NULL)
-		return;
+		return ;
 	temp = (*lst);
 	*lst = (*lst)->next;
 	temp->next = (*lst)->next;
@@ -25,40 +25,40 @@ void	ft_swap(t_lst **lst)
 	(*lst)->previous = NULL;
 	temp->previous = *lst;
 	set_position(lst);
-	return;
+	return ;
 }
 
-void    ft_push(t_lst **orig, t_lst **dest)
+void	ft_push(t_lst **orig, t_lst **dest)
 {
-    t_lst   *temp;
+	t_lst	*temp;
 
-    if (!*orig)
+	if (!*orig)
 		return ;
 	temp = *orig;
-    (*orig) = (*orig)->next;
+	(*orig) = (*orig)->next;
 	if ((*orig) != NULL)
 		(*orig)->previous = NULL;
-    temp->next = *dest;
+	temp->next = *dest;
 	if (*dest)
 		(*dest)->previous = temp;
 	else
 		temp->previous = NULL;
-    *dest = temp;
-	if(*orig)
+	*dest = temp;
+	if (*orig)
 		set_position(orig);
-	if(*dest)
+	if (*dest)
 		set_position(dest);
-    return;
+	return ;
 }
 
-void    ft_rotate(t_lst **lst)
+void	ft_rotate(t_lst **lst)
 {
 	t_lst	*temp;
 
 	if (!*lst)
-		return;
+		return ;
 	temp = *lst;
-	while(temp->next)
+	while (temp->next)
 		temp = temp->next;
 	if (*lst != temp)
 	{
@@ -70,17 +70,17 @@ void    ft_rotate(t_lst **lst)
 		(*lst)->previous = NULL;
 	}
 	set_position(lst);
-	return;
+	return ;
 }
 
-void    ft_reverse_rotate(t_lst **lst)
+void	ft_reverse_rotate(t_lst **lst)
 {
 	t_lst	*temp;
-	
+
 	if (!*lst)
-		return;
+		return ;
 	temp = *lst;
-	while(temp->next)
+	while (temp->next)
 		temp = temp->next;
 	if (*lst != temp)
 	{
@@ -91,5 +91,5 @@ void    ft_reverse_rotate(t_lst **lst)
 		(*lst) = temp;
 	}
 	set_position(lst);
-	return;
+	return ;
 }

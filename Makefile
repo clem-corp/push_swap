@@ -6,7 +6,7 @@
 #    By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/16 03:18:57 by clacaill          #+#    #+#              #
-#    Updated: 2023/03/03 03:35:49 by clacaill         ###   ########.fr        #
+#    Updated: 2023/03/09 17:00:52 by clacaill         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,11 @@ build		:=
 NAME    	= push_swap
 SRCS_DIR	= ./
 SRCS		= main.c checker.c utils_stack.c
-SRCS		+= utils/init.c utils/add_lst.c utils/free.c
-SRCS		+= process.c
+SRCS		+= utils/init.c utils/add_lst.c utils/free.c utils/init_2.c
+SRCS		+= process/process.c
+SRCS		+= process/process_big.c process/process_big_two.c
+SRCS		+= process/process_three.c process/process_four.c
+SRCS		+= process/process_five.c process/process_six.c
 OBJS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.o})
 DEPS		= $(addprefix ${SRCS_DIR}, ${SRCS:.c=.d})
 

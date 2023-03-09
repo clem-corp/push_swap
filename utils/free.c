@@ -6,23 +6,11 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 08:31:27 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/28 17:37:33 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:44:13 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../push_swap.h"
-
-size_t lst_len(t_lst *lst)
-{
-    size_t size;
-	
-	size = 0;
-    while (lst != NULL) {
-        size++;
-        lst = lst->next;
-    }
-    return size;
-}
+#include "../push_swap.h"
 
 void	free_lst(t_lst **first)
 {

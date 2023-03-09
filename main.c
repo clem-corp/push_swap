@@ -6,26 +6,48 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/08 19:24:28 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:44:21 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void ft_update_index(t_lst **lst) {
-    t_lst *curr = *lst;
-    while (curr != NULL) {
-        int count = 0;
-        t_lst *iter = *lst;
-        while (iter != NULL) {
-            if (iter->n < curr->n)
-                count++;
-            iter = iter->next;
-        }
-        curr->index = count;
-        curr = curr->next;
-    }
-	return;
+void	ft_update_index(t_lst **lst)
+{
+	t_lst	*curr;
+	int		count;
+	t_lst	*iter;
+
+	curr = *lst;
+	count = 0;
+	iter = *lst;
+	while (curr != NULL)
+	{
+		count = 0;
+		iter = *lst;
+		while (iter != NULL)
+		{
+			if (iter->n < curr->n)
+				count++;
+			iter = iter->next;
+		}
+		curr->index = count;
+		curr = curr->next;
+	}
+	return ;
+}
+
+size_t	lst_len(t_lst *lst)
+{
+	size_t	size;
+
+	size = 0;
+	while (lst != NULL)
+	{
+		size++;
+		lst = lst->next;
+	}
+	return (size);
 }
 
 int	main(int argc, const char **argv)
@@ -42,10 +64,10 @@ int	main(int argc, const char **argv)
 		if (ft_already_order(argv) == 1)
 			return (ft_printf("OK"));
 		lst = init_lst(argc, argv);
-		if(!lst)
+		if (!lst)
 			return (ft_printf("Error\n"));
 		stack = init_stack(&lst);
-		if(!stack)
+		if (!stack)
 			return (ft_printf("Error\n"));
 		ft_update_index(&(stack->a));
 		ft_process(&stack);
