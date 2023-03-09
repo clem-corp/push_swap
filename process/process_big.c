@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 15:56:21 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/09 16:29:52 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:19:47 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	ft_reduce_a_first(t_stack **stack)
 	ft_printf("pb\n");
 	(*stack)->a_size = (*stack)->a_size - 1;
 	(*stack)->b_size = (*stack)->b_size + 1;
+	return ;
 }
 
 void	ft_reduce_a_min(t_stack **stack, unsigned int j)
@@ -75,6 +76,7 @@ void	ft_reduce_a_min(t_stack **stack, unsigned int j)
 		ft_reverse_rotate(&((*stack)->a));
 		ft_printf("rra\n");
 	}
+	return ;
 }
 
 void	ft_reduce_a_last(t_stack **stack)
@@ -84,4 +86,5 @@ void	ft_reduce_a_last(t_stack **stack)
 		ft_rotate(&((*stack)->a));
 		ft_printf("ra\n");
 	}
+	return ;
 }

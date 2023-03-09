@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 16:29:03 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/09 16:59:51 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:07:09 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	ft_reduce_a(t_stack **stack)
 		}
 		else if (i >= j * (*stack)->key_nmbr)
 			j++;
-		else
+		else if ((*stack)->a_size > 2
+			&& (ft_rotate_or_reverse(stack, &((*stack)->a), j) == 1
+				|| ft_rotate_or_reverse(stack, &((*stack)->a), j) == -1))
 			ft_reduce_a_min(stack, j);
 	}
 	ft_reduce_a_last(stack);
