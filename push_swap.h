@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 12:46:54 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/07 16:29:12 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:22:26 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_stack
 enum	e_select_print
 {
 	noprint = 0,
-	print = 1 
+	print = 1
 };
 
 enum	e_lst_select
@@ -74,7 +74,7 @@ void	set_position(t_lst **lst);
 /* ************************************************************************** */
 int		is_digit(int c);
 int		stack_checker(const int argc, const char **argv);
-int		already_order(const char **argv);
+int		ft_already_order(const char **argv);
 
 /* ************************************************************************** */
 /* Add front -- Add back */
@@ -113,7 +113,7 @@ void    ft_rotate(t_lst **lst);
 /* ************************************************************************** */
 /* Reverse Rotate (-1 all position) { last to first } */
 /* ************************************************************************** */
-void    ft_reverse_rotate(t_lst **lst); 
+void    ft_reverse_rotate(t_lst **lst);
 
 /* ************************************************************************** */
 /* stack */

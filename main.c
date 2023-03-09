@@ -6,13 +6,13 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/07 19:25:44 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:24:28 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void update_index(t_lst **lst) {
+void ft_update_index(t_lst **lst) {
     t_lst *curr = *lst;
     while (curr != NULL) {
         int count = 0;
@@ -34,12 +34,12 @@ int	main(int argc, const char **argv)
 	t_lst	*lst;
 
 	if (argc < 2)
-		return (ft_printf("Error\n"));
+		return (0);
 	else
 	{
 		if (stack_checker((const int)argc, (const char **)argv) == 0)
 			return (ft_printf("Error\n"));
-		if (already_order(argv) == 1)
+		if (ft_already_order(argv) == 1)
 			return (ft_printf("OK"));
 		lst = init_lst(argc, argv);
 		if(!lst)
@@ -47,13 +47,8 @@ int	main(int argc, const char **argv)
 		stack = init_stack(&lst);
 		if(!stack)
 			return (ft_printf("Error\n"));
-		update_index(&(stack->a));
+		ft_update_index(&(stack->a));
 		ft_process(&stack);
-/* 		while(stack->a)
-		{
-			printf("stack->a->n : %d \n", stack->a->n);
-			stack->a = stack->a->next;
-		} */
 		free_stack(&stack);
 	}
 }

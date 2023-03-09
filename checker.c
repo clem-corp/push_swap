@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 05:36:46 by clacaill          #+#    #+#             */
-/*   Updated: 2023/02/28 16:13:12 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/08 19:22:26 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ int	stack_checker(const int argc, const char **argv)
 	int	i;
 	int j;
 	long int value;
-	long int value2;
 
 	i = 0;
 	j = -1;
 	value = 0;
-	value2 = 0;
 	// checker les non chiffres
 	while (argv[++i] && i <= argc)
 	{
@@ -56,7 +54,7 @@ int	stack_checker(const int argc, const char **argv)
 }
 
 // Already order ? 1 : 0
-int	already_order(const char **argv)
+int	ft_already_order(const char **argv)
 {
 	int			i;
 	long int	value;

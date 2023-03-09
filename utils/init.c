@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 08:15:52 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/07 19:31:20 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:50:24 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 size_t set_size(t_lst *lst)
 {
     size_t size;
-	
+
 	size = 0;
     while (lst != NULL) {
         size++;
@@ -26,7 +26,7 @@ size_t set_size(t_lst *lst)
 
 int find_min_lst(t_lst *lst) {
     int min;
-	
+
 	min = lst->n;
     while (lst != NULL) {
         if (lst->n < min) {
@@ -40,7 +40,7 @@ int find_min_lst(t_lst *lst) {
 int find_max_lst(t_lst *lst)
 {
     int max;
-	
+
 	max = lst->n;
     while (lst != NULL) {
         if (lst->n > max) {
@@ -53,14 +53,12 @@ int find_max_lst(t_lst *lst)
 
 int		find_key_nmbr(t_stack *stack)
 {
-	if(stack->size_g < 100)
-		return((stack->size_g - 2) / 4);
-	else if(stack->size_g > 100 && stack->size_g < 300)
+	if(stack->size_g <= 100)
+		return((stack->size_g - 2) / 5);
+	else if(stack->size_g > 100 && stack->size_g < 500)
 		return((stack->size_g - 2) / 10);
-	else if(stack->size_g > 300 && stack->size_g <= 500)
-		return((stack->size_g - 2) / 20);
-	else if(stack->size_g > 500)
-		return((stack->size_g - 2) / 30);
+	else if(stack->size_g >= 500)
+		return((stack->size_g - 2) / 13);
 	return (0);
 }
 
