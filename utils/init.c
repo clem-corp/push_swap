@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 08:15:52 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/08 16:50:24 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:32:44 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int		find_key_nmbr(t_stack *stack)
 	else if(stack->size_g > 100 && stack->size_g < 500)
 		return((stack->size_g - 2) / 10);
 	else if(stack->size_g >= 500)
-		return((stack->size_g - 2) / 13);
+		return((stack->size_g - 2) / 12);
 	return (0);
 }
 

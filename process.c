@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 14:50:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/09 13:21:27 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 13:49:31 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,41 @@ void	ft_process_three(t_stack **stack)
 	}
 }
 
+void	ft_process_three_reverse(t_stack **stack)
+{
+	if ((*stack)->b->index == 2 && (*stack)->b->next->index == 0)
+	{
+		ft_rotate(&(*stack)->b);
+		ft_printf("rb\n");
+	}
+	else if ((*stack)->b->index == 2 && (*stack)->b->next->index == 1)
+	{
+		ft_rotate(&(*stack)->b);
+		ft_swap(&(*stack)->b);
+		ft_printf("rb\nsb\n");
+	}
+	else if ((*stack)->b->index == 1 && (*stack)->b->next->index == 2)
+	{
+		ft_reverse_rotate(&(*stack)->b);
+		ft_printf("rrb\n");
+	}
+	else if ((*stack)->b->index == 1 && (*stack)->b->next->index == 0)
+	{
+		ft_swap(&(*stack)->b);
+		ft_printf("sb\n");
+	}
+	else if ((*stack)->b->index == 0 && (*stack)->b->next->index == 2)
+	{
+		ft_reverse_rotate(&(*stack)->b);
+		ft_swap(&(*stack)->b);
+		ft_printf("rrb\nsb\n");
+	}
+	// 0 1 2
+	ft_rotate(&(*stack)->b);
+	ft_swap(&(*stack)->b);
+	ft_printf("rb\nsb\n");
+}
+
 void	ft_process_sm_five(t_stack **stack)
 {
 	if ((*stack)->a->index - 2 == 2 && (*stack)->a->next->index - 2 == 0)
@@ -189,6 +224,37 @@ void	ft_process_sm_five(t_stack **stack)
 		ft_printf("sa\n");
 	}
 	else if ((*stack)->a->index - 2 == 0 && (*stack)->a->next->index - 2 == 2)
+	{
+		ft_reverse_rotate(&(*stack)->a);
+		ft_swap(&(*stack)->a);
+		ft_printf("rra\nsa\n");
+	}
+}
+
+void	ft_process_sm_six(t_stack **stack)
+{
+	if ((*stack)->a->index - 3 == 2 && (*stack)->a->next->index - 3 == 0)
+	{
+		ft_rotate(&(*stack)->a);
+		ft_printf("ra\n");
+	}
+	else if ((*stack)->a->index - 3 == 2 && (*stack)->a->next->index - 3 == 1)
+	{
+		ft_rotate(&(*stack)->a);
+		ft_swap(&(*stack)->a);
+		ft_printf("ra\nsa\n");
+	}
+	else if ((*stack)->a->index - 3 == 1 && (*stack)->a->next->index - 3 == 2)
+	{
+		ft_reverse_rotate(&(*stack)->a);
+		ft_printf("rra\n");
+	}
+	else if ((*stack)->a->index - 3 == 1 && (*stack)->a->next->index - 3 == 0)
+	{
+		ft_swap(&(*stack)->a);
+		ft_printf("sa\n");
+	}
+	else if ((*stack)->a->index - 3 == 0 && (*stack)->a->next->index - 3 == 2)
 	{
 		ft_reverse_rotate(&(*stack)->a);
 		ft_swap(&(*stack)->a);
@@ -280,7 +346,27 @@ void	ft_process_four(t_stack **stack)
 
 void	ft_process_six(t_stack **stack)
 {
-	return;
+	while((*stack)->b_size != 3)
+	{
+		if ((*stack)->a->index == 0 || (*stack)->a->index == 1 || (*stack)->a->index == 2)
+		{
+			ft_push(&((*stack)->a),&((*stack)->b));
+			ft_printf("pb\n");
+			(*stack)->a_size = (*stack)->a_size - 1;
+			(*stack)->b_size = (*stack)->b_size + 1;
+		}
+		else
+		{
+			ft_rotate(&((*stack)->a));
+			ft_printf("ra\n");
+		}
+	}
+	ft_process_sm_six(stack);
+	ft_process_three_reverse(stack);
+	ft_push(&((*stack)->b),&((*stack)->a));
+	ft_push(&((*stack)->b),&((*stack)->a));
+	ft_push(&((*stack)->b),&((*stack)->a));
+	ft_printf("pa\npa\npa\n");
 }
 
 void	ft_process(t_stack **stack)
