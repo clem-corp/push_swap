@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 00:35:36 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/09 17:20:05 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:38:56 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	main(int argc, const char **argv)
 	{
 		if (stack_checker((const int)argc, (const char **)argv) == 0)
 			return (ft_printf("Error\n"));
-		if (ft_already_order(argv) == 1)
-			return (ft_printf("OK\n"));
+		if (argc == 2 || ft_already_order(argv) == 1)
+			return (0);
 		lst = init_lst(argc, argv);
 		if (!lst)
 			return (ft_printf("Error\n"));

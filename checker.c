@@ -6,7 +6,7 @@
 /*   By: clacaill <clacaill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 05:36:46 by clacaill          #+#    #+#             */
-/*   Updated: 2023/03/09 16:58:04 by clacaill         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:36:25 by clacaill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@ int	check_two(const int argc, const char **argv)
 		value = ft_atoi(argv[i]);
 		if (value > N_MAX || value < N_MIN)
 			return (0);
+		j = i + 1;
 		while (argv[j] && j <= argc)
 		{
-			if (i != j && ft_atoi(argv[j]) == ft_atoi(argv[i]))
+			if (ft_atoi(argv[j]) == ft_atoi(argv[i]))
 				return (0);
 			j++;
 		}
@@ -70,7 +71,7 @@ int	ft_already_order(const char **argv)
 	long int	value;
 	long int	value2;
 
-	i = 0;
+	i = 1;
 	value = 0;
 	value2 = 1;
 	while (argv[i] && (value < value2))
